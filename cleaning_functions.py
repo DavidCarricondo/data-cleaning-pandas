@@ -4,12 +4,14 @@
 
 import re
 
-##Column names to lower case removing blank spaces from beginning and end and subituttin them by _ in the middle:
+##Column names to lower case removing blank spaces from beginning and end and subituttin them by _ in the middle,
+# it also removes comments between brackets after the name of the column:
 
 def fixcolnames(lst):
     l=[]
     for e in lst:
-        x = e.strip(' ').replace(' ', '_')
+        x = e.split('(') [0]
+        x = x.strip(' ').replace(' ', '_')
         l.append(x.lower())
     return l
 
@@ -20,9 +22,9 @@ def fixcolnames(lst):
 def fixtime(lst):
     l = []
     for e in lst:
-        r = re.search(r"\d{1,2}(?=h|:|\d{2})", e).group()
+        r = re.search(r"\d{1,2}(?=h|:|\d{2})", e)
         if r:
-            l.append(r)
+            l.append(r.group())
         else: l.append(e)
     return l
 
