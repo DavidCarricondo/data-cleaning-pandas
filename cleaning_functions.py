@@ -74,12 +74,18 @@ def fatality(lst):
     return (l.count('Y')/len(l))*100
 
 
-##Function to extract country hemisphere. This function just uses countryinfo module 
-#  to check whether the latitude of a country is positive or negative:
 
-def hemis(x):
+#Function to fix the country column 
+def fixcountry(x):
     try:
-        if cti.CountryInfo(x).latlng()[0]>0:
-            return 'N'
-        else: return 'S'
+        s = re.search(r".*(?=[\/,\(,&,\?,\,])",x)
+        st = s.group()
+        return st.strip(' ').lower()
+    except: return x.strip(' ').lower()
+
+
+#Function to extract the population of a country
+def getpop(x):
+    try:
+        return cn.CountryInfo(x).population()
     except: return None
