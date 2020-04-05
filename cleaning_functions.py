@@ -24,7 +24,7 @@ def fixcolnames(lst):
 def fixtime(lst):
     l = []
     for e in lst:
-        r = re.search(r"\d{1,2}(?=h|:|\d{2})", e)
+        r = re.search(r"\d{1,2}(?=[a-z]|:|\d{2})", e)
         if r:
             l.append(r.group())
         else: l.append(e)
@@ -67,6 +67,13 @@ def fixactiv(lst):
         else: l.append('other')
     return l
 
+
+#Function to calculate the percentage of fatal attacks over non-fatals (fatality):
+def fatality(lst):
+    l = list(lst)
+    return (l.count('Y')/len(l))*100
+
+
 ##Function to extract country hemisphere. This function just uses countryinfo module 
 #  to check whether the latitude of a country is positive or negative:
 
@@ -76,9 +83,3 @@ def hemis(x):
             return 'N'
         else: return 'S'
     except: return None
-
-
-#Function to calculate the percentage of fatal attacks over non-fatals (fatality):
-def fatality(lst):
-    l = list(lst)
-    return (l.count('Y')/len(l))*100
