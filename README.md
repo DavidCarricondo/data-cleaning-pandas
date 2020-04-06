@@ -1,6 +1,6 @@
 # data-cleaning-pandas: SHARK ATTACK PROJECT: 
 
-<img src="babyshark.jpg" alt="Sharks"
+<img src="./INPUT/babyshark.jpg" alt="Sharks"
 	title="Very aggresive sharks" width="2000" height="300"/>
 
 <p>&nbsp;&nbsp;&nbsp;&nbsp;Ironhack project on data cleaning with pandas using the 'Global Shark Attack' dataset.
@@ -20,5 +20,7 @@
 ## Conclusion
 &nbsp;&nbsp;&nbsp;&nbsp;In general, shark attacks are 6.3% more lethal during the night than during the day. 
 
-<img src="sharkmeme.jpg" alt="Sharks"
+<p align="center">
+<img src="./INPUT/sharkmeme.jpg" alt="Sharks"
 	title="Could I please eat you?"/>
+</p>
