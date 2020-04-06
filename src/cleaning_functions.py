@@ -35,35 +35,34 @@ def fixtime(lst):
 
 def timeclassify(lst):
     l = []
-    key_night = ['night', 'midnight', 'evening', 'dark', 'dusk', 'sunset', 'dawn', 'dusk', 'sundown']
-    key_day = ['midday', 'afternoon', 'morning', 'noon', 'day', 'lunch']
-    
-    for e in lst:
+    dict = {'Night' : ['night', 'midnight', 'evening', 'dark', 'dusk', 'sunset', 'dawn', 'dusk', 'sundown'],
+            'Day' : ['midday', 'afternoon', 'morning', 'noon', 'day', 'lunch']}
+    for i, e in enumerate(lst):
         try:
             if int(e) > 20 or int(e)< 8:
                 l.append('Night')
             else: l.append('Day')
         except:
-            if any(x in e.lower() for x in key_night):
-                l.append('Night')
-            elif any(x in e.lower() for x in key_day):
-                l.append('Day')
-            else: l.append(None)
+            for k in dict.keys():
+                if any(x in e.lower() for x in dict[k]):
+                    l.append(k)
+                    break
+            if len(l) == i: l.append(None)
     return l
     
 #Function to categorize activity into 5 categories:
 
 def fixactiv(lst):
+    dict = {'fishing':['spear', 'fish','hunt'],
+            'surfing':['surf', 'boar','padd','kay'],
+            'swimming':['swim', 'snork', 'scub','div','bath','float','jump','play'],
+           'standing':['wading', 'stand', 'walk', 'sit','wash','splash']}
     l = []
     for e in lst:
-        if any(x in e.lower() for x in ['surf', 'boar','padd','kay']):
-            l.append('surfing')
-        elif any(x in e.lower() for x in ['spear', 'fish','hunt']):
-            l.append('fishing')
-        elif any(x in e.lower() for x in ['swim', 'snork', 'scub','div','bath','float','jump','play']):
-            l.append('swimming')
-        elif any(x in e.lower() for x in ['wading', 'stand', 'walk', 'sit','wash','splash']):
-            l.append('standing')
+        for k in dict.keys():
+            if any(x in e.lower() for x in dict[k]):
+                l.append(k)
+                break
         else: l.append('other')
     return l
 
@@ -79,7 +78,7 @@ def fatality(lst):
 #Function to fix the country column 
 def fixcountry(x):
     try:
-        s = re.search(r".*(?=[\/,\(,&,\?,\,])",x)
+        s = re.search(r".*(?=[\/\(&\?,])",x)
         st = s.group()
         return st.strip(' ').lower()
     except: return x.strip(' ').lower()
@@ -88,5 +87,5 @@ def fixcountry(x):
 #Function to extract the population of a country
 def getpop(x):
     try:
-        return cn.CountryInfo(x).population()
+        return cti.CountryInfo(x).population()
     except: return None
