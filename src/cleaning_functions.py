@@ -1,4 +1,4 @@
-### Function for cleaning pandas:
+### Functions for cleaning pandas shark dataset:
 
 #dependencies:
 
@@ -31,7 +31,9 @@ def fixtime(lst):
     return l
 
 
-##Function to classify night time
+##Function to classify night time.
+# Times later than 20 and earlier than 8 are assign as night, if a text,
+# some key words might indicate whether is night or day, otherwise none.
 
 def timeclassify(lst):
     l = []
@@ -51,6 +53,7 @@ def timeclassify(lst):
     return l
     
 #Function to categorize activity into 5 categories:
+# Categorizes activity if some keywords are detected in the text, else 'other'.
 
 def fixactiv(lst):
     dict = {'fishing':['spear', 'fish','hunt'],
@@ -68,6 +71,7 @@ def fixactiv(lst):
 
 
 #Function to calculate the percentage of fatal attacks over non-fatals (fatality):
+
 def fatality(lst):
     l = list(lst)
     return (l.count('Y')/len(l))*100
@@ -75,7 +79,10 @@ def fatality(lst):
 
 ##Functions for the bonus part:
 
-#Function to fix the country column 
+#Function to fix the country column. 
+# It splits a name if some non alphabetical or numerical simbols are present, 
+# removes spaces from the edges, and convert them to lowercase
+
 def fixcountry(x):
     try:
         s = re.search(r".*(?=[\/\(&\?,])",x)
@@ -84,7 +91,9 @@ def fixcountry(x):
     except: return x.strip(' ').lower()
 
 
-#Function to extract the population of a country
+#Function to extract the population of a country.
+# Extract the population after converting the string into a CountryInfo object. 
+
 def getpop(x):
     try:
         return cti.CountryInfo(x).population()
