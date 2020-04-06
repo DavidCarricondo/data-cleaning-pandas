@@ -18,7 +18,7 @@
 ### Analysis
 &nbsp;&nbsp;&nbsp;&nbsp;To answer the questions stated above, I use a series of <em>bar plots</em>, <em>pie plots</em>, and <em>scatter plots</em> which construction is included in the jupyter notebook `Analysis.ipynb`. The analysis process relies heavily on the custom function `fatality` defined in the file `cleaning_functions.py`. This function calculates the percentage of fatal attacks over the total number of attacks by using the fatal columns ('Y'/'N').
 ## Conclusion
-&nbsp;&nbsp;&nbsp;&nbsp;In general, shark attacks are 6.3% more lethal during the night than during the night. This is specially true when the victim is performing an activity close to the shoreline (walking, swimming, standing). Although fatality seems to decrease over the decades, this could be an artifact of the data (more, less biased and more accurate records nowadays).<br>&nbsp;&nbsp;&nbsp;&nbsp;However, these conclussions have to be treated carefuly, since they are only based on a portion of the data (where time was somehow accurately reported).
+&nbsp;&nbsp;&nbsp;&nbsp;In general, shark attacks are 6.3% more lethal during the night than during the night. This is specially true when the victim is performing an activity close to the shoreline (walking, swimming, standing). Although fatality seems to decrease over the decades, this could be an artifact of the data (more, less biased and more accurate records nowadays).<br>&nbsp;&nbsp;&nbsp;&nbsp;However, these conclussions have to be treated carefuly, since they are based only on a portion of the data (where time was somehow accurately reported).
 
 <p align="center">
 <img src="./INPUT/sharkmeme.jpg" alt="Sharks"
