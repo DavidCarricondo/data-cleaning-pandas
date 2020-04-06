@@ -74,6 +74,7 @@ def fatality(lst):
     return (l.count('Y')/len(l))*100
 
 
+##Functions for the bonus part:
 
 #Function to fix the country column 
 def fixcountry(x):
